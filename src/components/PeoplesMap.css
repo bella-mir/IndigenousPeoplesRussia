@@ -1,0 +1,18 @@
+.leaflet-container {
+  background-color:#9FBFC6;
+  z-index: 0;
+  margin: 0;
+  width:100%;
+  position:fixed;
+  left:0px;
+}
+
+.leaflet-tooltip {
+  font-family: 'Geometria';
+  font-size: 12px;
+  position: absolute;
+  background-color: rgba(255,255,255,0.95);
+  border-radius: 7px;
+  color: #222;
+}
+

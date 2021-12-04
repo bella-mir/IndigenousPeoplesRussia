@@ -1,0 +1,51 @@
+.container {
+    position: relative;
+    float:right; 
+    font-size: 20px;  
+  }
+
+.mainmap,
+.infobox{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+.infobox{
+    background-color:rgba(217,217,217,0.9); 
+    right:0px;
+    top: 0px;
+    width:35%;
+    height: 100vh;
+    text-align: right;
+    color : #303030;
+    z-index: 10;
+    overflow:hidden;
+
+    font-family: Geometria;
+    font-size: 16px;  
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    line-height: 1.8;
+    }
+
+.title{
+    padding-top: 25px;  
+}
+    
+.textnation{
+    font-weight: 700px;
+}
+
+.text{
+    text-align: left; 
+    padding-left: 40px;
+    padding-right: 30px;
+    line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Geometria-Medium;
+}
+

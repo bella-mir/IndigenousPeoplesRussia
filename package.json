@@ -1,0 +1,43 @@
+{
+  "homepage": "http://belkamir.github.io/IndigenousPeoplesRussia",
+  "name": "indigenous_peoples",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@skyeer/react-leaflet-custom-control": "0.0.6",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "bootstrap": "^4.6.0",
+    "html-react-parser": "^1.4.1",
+    "leaflet": "^1.6.0",
+    "leaflet-tooltip-layout": "^0.1.2",
+    "papaparse": "^5.2.0",
+    "proj4leaflet": "^1.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^16.13.1",
+    "react-leaflet": "^3.2.2",
+    "react-leaflet-choropleth": "^2.0.1",
+    "react-scripts": "3.4.3",
+    "scripts": "^0.1.0"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
