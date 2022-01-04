@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/IndigenousPeoplesRussia/static/css/main.02bb96a7.chunk.css",
+    "main.js": "/IndigenousPeoplesRussia/static/js/main.1ab720ae.chunk.js",
+    "main.js.map": "/IndigenousPeoplesRussia/static/js/main.1ab720ae.chunk.js.map",
+    "runtime-main.js": "/IndigenousPeoplesRussia/static/js/runtime-main.82925903.js",
+    "runtime-main.js.map": "/IndigenousPeoplesRussia/static/js/runtime-main.82925903.js.map",
+    "static/css/2.67697698.chunk.css": "/IndigenousPeoplesRussia/static/css/2.67697698.chunk.css",
+    "static/js/2.94ccda78.chunk.js": "/IndigenousPeoplesRussia/static/js/2.94ccda78.chunk.js",
+    "static/js/2.94ccda78.chunk.js.map": "/IndigenousPeoplesRussia/static/js/2.94ccda78.chunk.js.map",
+    "index.html": "/IndigenousPeoplesRussia/index.html",
+    "precache-manifest.67e81ad57550172a11893088ebab1275.js": "/IndigenousPeoplesRussia/precache-manifest.67e81ad57550172a11893088ebab1275.js",
+    "service-worker.js": "/IndigenousPeoplesRussia/service-worker.js",
+    "static/css/2.67697698.chunk.css.map": "/IndigenousPeoplesRussia/static/css/2.67697698.chunk.css.map",
+    "static/css/main.02bb96a7.chunk.css.map": "/IndigenousPeoplesRussia/static/css/main.02bb96a7.chunk.css.map",
+    "static/js/2.94ccda78.chunk.js.LICENSE.txt": "/IndigenousPeoplesRussia/static/js/2.94ccda78.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/IndigenousPeoplesRussia/static/media/Geometria-ThinItalic.393bfeca.woff",
+    "static/media/Geometria.woff": "/IndigenousPeoplesRussia/static/media/Geometria.c7b2c2d8.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.82925903.js",
+    "static/css/2.67697698.chunk.css",
+    "static/js/2.94ccda78.chunk.js",
+    "static/css/main.02bb96a7.chunk.css",
+    "static/js/main.1ab720ae.chunk.js"
+  ]
+}
