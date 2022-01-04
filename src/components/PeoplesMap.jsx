@@ -22,18 +22,22 @@ let selected = null;
 
 
 const HighlightFeature = (layer) => {
+  if(selected == null || selected._leaflet_id !== layer._leaflet_id) {
+
     layer.setStyle({
-        weight: 2,
-        color: 'white',
+        /*weight: 3,
+        color: 'white',*/
+        weight: 1.5,
         dashArray: '',
-        fillOpacity: 1
+        fillOpacity: 0.9
     }
     );
+    /*layer.bindTooltip(feature.properties.Nation, {permanent: true, direction: 'center', position:'auto'}).openTooltip(); */
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
       layer.bringToFront();
   }
-};
+}};
 
 
 const geoJsonRef = useRef();
@@ -43,7 +47,6 @@ const ResetHighlight = (layer) => {
     geoJsonRef.current.resetStyle(layer);
   }
 };
-
 
 const Select = (layer) => {
   if (selected !== null) {
@@ -56,7 +59,6 @@ const Select = (layer) => {
   layer.setStyle({
     weight: 3,
     color: "white",
-    dashArray: ' 3 5',
     fillOpacity: 1
 }
 );
@@ -86,13 +88,11 @@ const onEachFeatureF = (feature, layer) => {
 };
 
 
-
   const crs = new L.Proj.CRS("EPSG:3576","+proj=laea +lat_0=90 +lon_0=90 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
  {resolutions: [ 32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5]
   //origin: [ -180, -90 ]         
 }
 );
-
 
   return (
     <>

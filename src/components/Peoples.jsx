@@ -15,7 +15,7 @@ const Peoples = () => {
         <div className="container">
 
           <div className="mainmap"> 
-            <PeoplesMap countries={countries} />
+            <PeoplesMap/>
           </div>
           
         </div>

@@ -12,7 +12,8 @@
   }
 
 .infobox{
-    background-color:rgba(217,217,217,0.9); 
+   /*background-color:rgba(159,191,198,0.9); */
+    background-color: rgba(222,232,235,0.92);
     right:0px;
     top: 0px;
     width:35%;
@@ -21,21 +22,25 @@
     color : #303030;
     z-index: 10;
     overflow:hidden;
-
+    border-left: #E6E2DF solid 2px; 
     font-family: Geometria;
     font-size: 16px;  
     padding: 10px;
     text-align: center;
     align-items: center;
     line-height: 1.8;
+    color:#2F393B;
     }
 
 .title{
-    padding-top: 25px;  
+    padding-top: 25px;
+    /*text-transform:uppercase;*/
 }
-    
+
+
 .textnation{
     font-weight: 700px;
+    padding-bottom:15px;
 }
 
 .text{
