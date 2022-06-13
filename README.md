@@ -1,6 +1,6 @@
-# Indigenous small-numbered peoples of the North, Siberia and the Far East
+# Indigenous small-numbered peoples of Russia
 
-## interactive map in Russian
+## Interactive map in Russian language
 
 [Github Pages](https://belka-mironova.github.io/IndigenousPeoplesRussia/)
 
