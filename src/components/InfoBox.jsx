@@ -13,6 +13,7 @@ const InfoBox = (props) => {
             <div className = "text"> {props.info ? <p><h6>Язык: </h6> {props.info.Language} </p>: null}</div> 
             <div className = "text"> {props.info ? <p><h6>Языковая группа: </h6> {props.info.LangFamily} </p>: null}</div> 
             <div className = "text"> {props.info ? <p><h6>Регионы проживания: </h6> {props.info.Oblast} </p>: null}</div> 
+            <button>Узнать</button>
             <button>Играть</button>
         </div>
     );
