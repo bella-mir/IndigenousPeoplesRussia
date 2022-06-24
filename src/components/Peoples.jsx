@@ -1,26 +1,39 @@
-import React from "react";
-import Loading from "./Loading";
+import React, {useState} from "react";
 import PeoplesMap from "./PeoplesMap";
-import "./Peoples.css"
-import countries from "../data/countries.json";
+import "./Peoples.css";
 
 const Peoples = () => {
-  
-  
+
+  const [quizMode, setQuizMode] = useState(false);
+  const [learnMode, setLearnMode] = useState(false);
+  const [startMode, setStartMode] = useState(true);
+
+  const handleStartQuizClick = (option) => {
+    setQuizMode(option);
+  };
+
+  const handleLearnClick = (option) => {
+    setLearnMode(option);
+  };
+
+  const handleStartModeClick = (option) => {
+    setStartMode(option);
+  };
+
   return (
     <div>
-      {countries.length === 0 ? (
-        <Loading />
-      ) : (
-        <div className="container">
-
-          <div className="mainmap"> 
-            <PeoplesMap/>
-          </div>
-          
+      <div className="container">
+        <div className="mainmap">
+          <PeoplesMap
+            quizMode={quizMode}
+            learnMode={learnMode}
+            startMode={startMode}
+            handleStartQuizClick={handleStartQuizClick}
+            handleLearnClick={handleLearnClick}
+            handleStartModeClick={handleStartModeClick}
+          />
         </div>
-      )}
-      
+      </div>
     </div>
   );
 };

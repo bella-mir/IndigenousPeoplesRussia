@@ -22,6 +22,14 @@ export const basemapStyle = {
     fillOpacity: 1
   };
 
+  export const quizStyle = {
+    color: "#9FBFC6",
+    weight: 0.8,
+    opacity: 1, 
+    fillColor: "#0000FF", 
+    fillOpacity: 1
+  };
+
   export const subteStyle = (nations) => {
     return {
       "fillColor": nations.properties.color,

@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import {
   MapContainer,
@@ -18,9 +18,14 @@ import russia from "../data/russia.json";
 import lakes from "../data/lakes.json";
 import nations from "../data/nations.json";
 
-const PeoplesMap = () => {
+const PeoplesMap = (props) => {
   let [info, SetInfo] = useState(null);
   let selected = null;
+  let [answer, SetAnswer] = useState(null);
+
+  // props.quizMode
+  // props.startMode
+  // props.learnMode
 
   const HighlightFeature = (layer) => {
     if (selected == null || selected._leaflet_id !== layer._leaflet_id) {
@@ -51,7 +56,6 @@ const PeoplesMap = () => {
     if (selected !== null) {
       var previous = selected;
     }
-
     SetInfo(layer.feature.properties);
     info = layer.feature.properties;
 
@@ -71,6 +75,7 @@ const PeoplesMap = () => {
     layer.on({
       click: function (e) {
         Select(e.target);
+        SetAnswer(e.target.feature.properties.Nation);
         // console.log(info);
       },
       mouseover: function (e) {
@@ -81,6 +86,7 @@ const PeoplesMap = () => {
       },
     });
     //layer.bindPopup("ID: " + feature.properties.fid+ "<br>Народ: " + feature.properties.Nation + "<br>Описание: " + feature.properties.Nation);
+
     layer
       .bindTooltip(feature.properties.Nation, {
         permanent: true,
@@ -104,7 +110,16 @@ const PeoplesMap = () => {
 
   return (
     <>
-      <InfoBox info={info} />
+      <InfoBox
+        info={info}
+        answer={answer}
+        isQuiz={props.quizMode}
+        islearn={props.learnMode}
+        isStart={props.startMode}
+        handleStartQuizClick={props.handleStartQuizClick}
+        handleLearnClick={props.handleLearnClick}
+        handleStartModeClick={props.handleStartModeClick}
+      />
       <MapContainer
         style={{ height: "100vh" }}
         zoomControl={false}
