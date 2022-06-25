@@ -1,8 +1,8 @@
 {
+  "homepage": "http://belka-mironova.github.io/IndigenousPeoplesRussia",
   "name": "indigenous_peoples",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://belka-mironova.github.io/IndigenousPeoplesRussia/",
   "dependencies": {
     "@skyeer/react-leaflet-custom-control": "0.0.6",
     "@testing-library/jest-dom": "^4.2.4",
@@ -15,19 +15,18 @@
     "papaparse": "^5.2.0",
     "proj4leaflet": "^1.0.2",
     "react": "^17.0.2",
-    "react-dom": "^16.13.1",
     "react-leaflet": "^3.2.2",
     "react-leaflet-choropleth": "^2.0.1",
     "react-scripts": "3.4.3",
     "scripts": "^0.1.0"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,6 +37,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^4.0.0"
   }
 }
