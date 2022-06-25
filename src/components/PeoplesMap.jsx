@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import L from "leaflet";
 import {
   MapContainer,
@@ -16,85 +16,26 @@ import * as myConstClass from "./constants.js";
 import world from "../data/world.json";
 import russia from "../data/russia.json";
 import lakes from "../data/lakes.json";
-import nations from "../data/nations.json";
+import PeoplesMapQuiz from "./PeoplesMapQuiz";
+import PeoplesMapInfo from "./PeoplesMapInfo";
+import PeoplesMapStart from "./PeoplesMapStart";
 
 const PeoplesMap = (props) => {
   let [info, SetInfo] = useState(null);
-  let selected = null;
   let [answer, SetAnswer] = useState(null);
 
-  // props.quizMode
-  // props.startMode
-  // props.learnMode
+  //   // Hook
+  // function usePrevious(value) {
+  //   const ref = useRef();
+  //   // Store current value in ref
+  //   useEffect(() => {
+  //     ref.current = value;
+  //   }, [value]); // Only re-run if value changes
+  //   // Return previous value (happens before update in useEffect above)
+  //   return ref.current;
+  // }
 
-  const HighlightFeature = (layer) => {
-    if (selected == null || selected._leaflet_id !== layer._leaflet_id) {
-      layer.setStyle({
-        /*weight: 3,
-        color: 'white',*/
-        weight: 1.5,
-        dashArray: "",
-        fillOpacity: 0.9,
-      });
-      /*layer.bindTooltip(feature.properties.Nation, {permanent: true, direction: 'center', position:'auto'}).openTooltip(); */
-
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
-    }
-  };
-
-  const geoJsonRef = useRef();
-
-  const ResetHighlight = (layer) => {
-    if (selected == null || selected._leaflet_id !== layer._leaflet_id) {
-      geoJsonRef.current.resetStyle(layer);
-    }
-  };
-
-  const Select = (layer) => {
-    if (selected !== null) {
-      var previous = selected;
-    }
-    SetInfo(layer.feature.properties);
-    info = layer.feature.properties;
-
-    layer.setStyle({
-      weight: 3,
-      color: "white",
-      fillOpacity: 1,
-    });
-
-    selected = layer;
-    if (previous) {
-      ResetHighlight(previous);
-    }
-  };
-
-  const onEachFeatureF = (feature, layer) => {
-    layer.on({
-      click: function (e) {
-        Select(e.target);
-        SetAnswer(e.target.feature.properties.Nation);
-        // console.log(info);
-      },
-      mouseover: function (e) {
-        HighlightFeature(e.target);
-      },
-      mouseout: function (e) {
-        ResetHighlight(e.target);
-      },
-    });
-    //layer.bindPopup("ID: " + feature.properties.fid+ "<br>Народ: " + feature.properties.Nation + "<br>Описание: " + feature.properties.Nation);
-
-    layer
-      .bindTooltip(feature.properties.Nation, {
-        permanent: true,
-        direction: "center",
-        position: "auto",
-      })
-      .openTooltip();
-  };
+  // const prevScore = usePrevious(score);
 
   const crs = new L.Proj.CRS(
     "EPSG:3576",
@@ -139,12 +80,9 @@ const PeoplesMap = (props) => {
 
         <GeoJSON data={lakes} style={myConstClass.waterStyle} />
 
-        <GeoJSON
-          data={nations}
-          style={myConstClass.subteStyle}
-          onEachFeature={onEachFeatureF}
-          ref={geoJsonRef}
-        />
+        {props.quizMode ? <PeoplesMapQuiz handleSetAnswer={SetAnswer} /> : null}
+        {props.learnMode ? <PeoplesMapInfo handleSetInfo={SetInfo} /> : null}
+        {!props.quizMode & !props.learnMode ? <PeoplesMapStart /> : null}
 
         <ScaleControl position="bottomleft" />
         <ZoomControl position="bottomleft" />

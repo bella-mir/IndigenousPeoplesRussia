@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { selectedNations } from "./quizConstants";
+import "./InfoBox.css";
 
 const InfoBox = (props) => {
-  console.log(props);
-
-  const [currentQuestion, setCurrentQuestion] = useState(-1);
   const [showScore, setShowScore] = useState(false);
-  const [score, setScore] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(-1);
+  let [score, setScore] = useState(0);
 
   const handleLearnButtonClick = () => {
     props.handleLearnClick(true);
@@ -28,17 +27,15 @@ const InfoBox = (props) => {
     setCurrentQuestion(0);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.answer === selectedNations[currentQuestion]) {
       setScore(score + 1);
     }
-    console.log(props.answer);
-    console.log(selectedNations[currentQuestion]);
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < selectedNations.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-    props.handleStartQuizClick(false);
+      props.handleStartQuizClick(false);
       setShowScore(true);
     }
   }, [props.answer]);
@@ -54,15 +51,14 @@ const InfoBox = (props) => {
       </div>
 
       {props.isStart ? (
-        <div>
-          <button onClick={handleLearnButtonClick}>Узнать</button>
-          <button onClick={handleQuizButtonClick}>Играть</button>
+        <div className='button_container'>
+          <button className="button button_learn" onClick={handleLearnButtonClick}>Узнать о народах</button>
+          <button className="button button_play" onClick={handleQuizButtonClick}>Играть</button>
         </div>
       ) : null}
 
       {props.islearn ? (
         <div>
-          <button onClick={handleQuizButtonClick}>Играть</button>
           <p className="textnation">
             {props.info ? (
               <h4> {props.info.Nation}</h4>
@@ -101,31 +97,36 @@ const InfoBox = (props) => {
               </p>
             ) : null}
           </div>
+          <div className='button_container button_container_learn '>
+          <button className='button button_play' onClick={handleQuizButtonClick}>Играть</button>
+          </div>
         </div>
       ) : null}
 
       {props.isQuiz ? (
-        <div>
-          <button onClick={handleLearnButtonClick}>Узнать</button>
-          <div className="title__container">
-            <h1 className="title__name">Где живут ...</h1>
+        <div className="quiz-box">
+            <h4 className="title__name">Где живут ...</h4>
             <div className="question-section">
-              <span>
-                {selectedNations[currentQuestion]} ({currentQuestion + 1}/
+                <h1>{selectedNations[currentQuestion]}?</h1>
+                <span>
+                ({currentQuestion + 1}/
                 {selectedNations.length})
               </span>
             </div>
-          </div>
         </div>
       ) : null}
 
       {showScore ? (
         <div className="title__container">
-          You scored {score} out of {selectedNations.length}
-          <button className="quiz__play" onClick={handleResetButtonClick}>
+          <div className='button_container'>
+          <h4>Вы знаете, где проживают </h4>
+          <h2>{score} из {selectedNations.length} народов</h2>
+            
+          <button className="button button_play" onClick={handleResetButtonClick}>
             Играть еще раз!
           </button>
-          <button onClick={handleLearnButtonClick}>Узнать</button>
+          <button className="button button_learn" onClick={handleLearnButtonClick}>Узнать о народах</button>
+          </div>
         </div>
       ) : null}
     </div>
