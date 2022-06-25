@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "247c008b55131a93a23b133c79ae924b",
+    "revision": "c1e36dc77f5b242b06effb7b7ab33ef3",
     "url": "/IndigenousPeoplesRussia/index.html"
   },
   {
