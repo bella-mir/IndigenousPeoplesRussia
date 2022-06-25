@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import L from "leaflet";
 import { GeoJSON } from "react-leaflet";
 import * as myConstClass from "./constants.js";
@@ -7,6 +7,7 @@ import nations from "../data/nations.json";
 
 export default function PeoplesMapQuiz(props) {
   let selected = null;
+  let counter = -1;
 
   const HighlightFeature = (layer) => {
     if (selected == null || selected._leaflet_id !== layer._leaflet_id) {
@@ -33,8 +34,8 @@ export default function PeoplesMapQuiz(props) {
     if (selected !== null) {
       var previous = selected;
     }
-    console.log(props.isRight);
-    if (props.isRight) {
+    console.log(props.nationsData[counter]);
+    if (layer.feature.properties.Nation === props.nationsData[counter]) {
       layer.setStyle({
         weight: 3,
         color: "#A4D6A5",
@@ -53,12 +54,15 @@ export default function PeoplesMapQuiz(props) {
     selected = layer;
     if (previous) {
       ResetHighlight(previous);
+      selected.closeTooltip();
     }
   };
 
   const onEachFeatureFQuiz = (feature, layer) => {
     layer.on({
       click: function (e) {
+        counter = counter + 1;
+        console.log(counter);
         Select(e.target);
         props.handleSetAnswer(e.target.feature.properties.Nation);
         e.target

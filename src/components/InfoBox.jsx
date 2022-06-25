@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { selectedNations } from "./quizConstants";
+// import { selectedNations } from "./quizConstants";
 import "./InfoBox.css";
 
 const InfoBox = (props) => {
@@ -12,6 +12,8 @@ const InfoBox = (props) => {
     props.handleStartQuizClick(false);
     props.handleStartModeClick(false);
     setShowScore(false);
+    setScore(0);
+    setCurrentQuestion(0);
   };
 
   const handleQuizButtonClick = () => {
@@ -28,11 +30,11 @@ const InfoBox = (props) => {
   };
 
   useEffect(() => {
-    if (props.answer === selectedNations[currentQuestion]) {
+    if (props.answer === props.nationsData[currentQuestion]) {
       setScore(score + 1);
     }
     const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < selectedNations.length) {
+    if (nextQuestion < props.nationsData.length) {
       setCurrentQuestion(nextQuestion);
     } else {
       props.handleStartQuizClick(false);
@@ -51,9 +53,19 @@ const InfoBox = (props) => {
       </div>
 
       {props.isStart ? (
-        <div className='button_container'>
-          <button className="button button_learn" onClick={handleLearnButtonClick}>Узнать о народах</button>
-          <button className="button button_play" onClick={handleQuizButtonClick}>Играть</button>
+        <div className="button_container">
+          <button
+            className="button button_learn"
+            onClick={handleLearnButtonClick}
+          >
+            Узнать о народах
+          </button>
+          <button
+            className="button button_play"
+            onClick={handleQuizButtonClick}
+          >
+            Играть
+          </button>
         </div>
       ) : null}
 
@@ -97,35 +109,49 @@ const InfoBox = (props) => {
               </p>
             ) : null}
           </div>
-          <div className='button_container button_container_learn '>
-          <button className='button button_play' onClick={handleQuizButtonClick}>Играть</button>
+          <div className="button_container button_container_learn ">
+            <button
+              className="button button_play"
+              onClick={handleQuizButtonClick}
+            >
+              Играть
+            </button>
           </div>
         </div>
       ) : null}
 
       {props.isQuiz ? (
         <div className="quiz-box">
-            <h4 className="title__name">Где живут ...</h4>
-            <div className="question-section">
-                <h1>{selectedNations[currentQuestion]}?</h1>
-                <span>
-                ({currentQuestion + 1}/
-                {selectedNations.length})
-              </span>
-            </div>
+          <h4 className="title__name">Где живут ...</h4>
+          <div className="question-section">
+            <h1>{props.nationsData[currentQuestion]}?</h1>
+            <span>
+              ({currentQuestion + 1}/{props.nationsData.length})
+            </span>
+          </div>
         </div>
       ) : null}
 
       {showScore ? (
         <div className="title__container">
-          <div className='button_container'>
-          <h4>Вы знаете, где проживают </h4>
-          <h2>{score} из {selectedNations.length} народов</h2>
-            
-          <button className="button button_play" onClick={handleResetButtonClick}>
-            Играть еще раз!
-          </button>
-          <button className="button button_learn" onClick={handleLearnButtonClick}>Узнать о народах</button>
+          <div className="button_container">
+            <h4>Вы знаете, где проживают </h4>
+            <h2>
+              {score} из {props.nationsData.length} народов
+            </h2>
+
+            <button
+              className="button button_play"
+              onClick={handleResetButtonClick}
+            >
+              Играть еще раз!
+            </button>
+            <button
+              className="button button_learn"
+              onClick={handleLearnButtonClick}
+            >
+              Узнать о народах
+            </button>
           </div>
         </div>
       ) : null}

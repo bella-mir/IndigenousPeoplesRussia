@@ -26,7 +26,7 @@ export const quizStyle = {
   color: "white",
   weight: 0.5,
   opacity: 1,
-  fillColor: '#91a3bf',
+  fillColor: "#91a3bf",
   fillOpacity: 0.6,
 };
 

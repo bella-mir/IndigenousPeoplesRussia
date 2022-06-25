@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import L from "leaflet";
 import {
   MapContainer,
@@ -19,23 +19,30 @@ import lakes from "../data/lakes.json";
 import PeoplesMapQuiz from "./PeoplesMapQuiz";
 import PeoplesMapInfo from "./PeoplesMapInfo";
 import PeoplesMapStart from "./PeoplesMapStart";
+import { selectedNations } from "./quizConstants";
 
 const PeoplesMap = (props) => {
+  const [nationsData, setNationsData] = useState(selectedNations);
   let [info, SetInfo] = useState(null);
   let [answer, SetAnswer] = useState(null);
 
-  //   // Hook
-  // function usePrevious(value) {
-  //   const ref = useRef();
-  //   // Store current value in ref
-  //   useEffect(() => {
-  //     ref.current = value;
-  //   }, [value]); // Only re-run if value changes
-  //   // Return previous value (happens before update in useEffect above)
-  //   return ref.current;
-  // }
+  //create function that shuffles array
+  function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
 
-  // const prevScore = usePrevious(score);
+  useEffect(() => {
+    if (props.quizMode === false) {
+      const newNations = shuffleArray(selectedNations).slice(0, 10);
+      setNationsData(newNations);
+    }
+  }, [props.quizMode]);
 
   const crs = new L.Proj.CRS(
     "EPSG:3576",
@@ -45,7 +52,6 @@ const PeoplesMap = (props) => {
         32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4,
         2, 1, 0.5,
       ],
-      //origin: [ -180, -90 ]
     }
   );
 
@@ -60,7 +66,9 @@ const PeoplesMap = (props) => {
         handleStartQuizClick={props.handleStartQuizClick}
         handleLearnClick={props.handleLearnClick}
         handleStartModeClick={props.handleStartModeClick}
+        nationsData={nationsData}
       />
+
       <MapContainer
         style={{ height: "100vh" }}
         zoomControl={false}
@@ -75,12 +83,15 @@ const PeoplesMap = (props) => {
         ]}
       >
         <GeoJSON data={world} style={myConstClass.basemapStyle2} />
-
         <GeoJSON data={russia} style={myConstClass.basemapStyle} />
-
         <GeoJSON data={lakes} style={myConstClass.waterStyle} />
 
-        {props.quizMode ? <PeoplesMapQuiz handleSetAnswer={SetAnswer} /> : null}
+        {props.quizMode ? (
+          <PeoplesMapQuiz
+            handleSetAnswer={SetAnswer}
+            nationsData={nationsData}
+          />
+        ) : null}
         {props.learnMode ? <PeoplesMapInfo handleSetInfo={SetInfo} /> : null}
         {!props.quizMode & !props.learnMode ? <PeoplesMapStart /> : null}
 
