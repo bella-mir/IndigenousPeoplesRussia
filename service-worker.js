@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/IndigenousPeoplesRussia/precache-manifest.66e9adea6d7904b9f01f034998489079.js"
+  "/IndigenousPeoplesRussia/precache-manifest.af10e17cf6baa27cca8bc83ecd19c249.js"
 );
 
 self.addEventListener('message', (event) => {

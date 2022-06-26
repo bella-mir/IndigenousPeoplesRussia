@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ee6946dd49865316c0972a0360281134",
+    "revision": "5da7cfc669317f7bbd0a858b06cd0b24",
     "url": "/IndigenousPeoplesRussia/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/IndigenousPeoplesRussia/static/css/2.4dfea804.chunk.css"
   },
   {
-    "revision": "27bba66a13f9bbf836b8",
-    "url": "/IndigenousPeoplesRussia/static/css/main.9ad9ef92.chunk.css"
+    "revision": "3ab0f6e0ee774af82458",
+    "url": "/IndigenousPeoplesRussia/static/css/main.1cbcf4fc.chunk.css"
   },
   {
     "revision": "74908e70c92a06666296",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/IndigenousPeoplesRussia/static/js/2.2a9ac253.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "27bba66a13f9bbf836b8",
-    "url": "/IndigenousPeoplesRussia/static/js/main.b2dbcb16.chunk.js"
+    "revision": "3ab0f6e0ee774af82458",
+    "url": "/IndigenousPeoplesRussia/static/js/main.0e576fcf.chunk.js"
   },
   {
     "revision": "d6acbc29908fb919661d",
