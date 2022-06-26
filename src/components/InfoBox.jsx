@@ -155,6 +155,7 @@ const InfoBox = (props) => {
           </div>
         </div>
       ) : null}
+      <div className="copyright">&copy;2022 Bella Mironova</div>
     </div>
   );
 };
