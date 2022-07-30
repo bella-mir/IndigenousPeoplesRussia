@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./InfoBox.css";
 
 const InfoBox = (props) => {
-  const [showScore, setShowScore] = useState(false);
+  // const [showScore, setShowScore] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(-1);
   let [score, setScore] = useState(0);
 
@@ -11,7 +11,7 @@ const InfoBox = (props) => {
     props.handleLearnClick(true);
     props.handleStartQuizClick(false);
     props.handleStartModeClick(false);
-    setShowScore(false);
+    props.handleResults(false);
     setScore(0);
     setCurrentQuestion(0);
   };
@@ -24,7 +24,7 @@ const InfoBox = (props) => {
 
   const handleResetButtonClick = () => {
     props.handleStartQuizClick(true);
-    setShowScore(false);
+    props.handleResults(false);
     setScore(0);
     setCurrentQuestion(0);
   };
@@ -38,7 +38,7 @@ const InfoBox = (props) => {
       setCurrentQuestion(nextQuestion);
     } else {
       props.handleStartQuizClick(false);
-      setShowScore(true);
+      props.handleResults(true);
     }
   }, [props.answer]);
 
@@ -132,7 +132,7 @@ const InfoBox = (props) => {
         </div>
       ) : null}
 
-      {showScore ? (
+      {props.isResults ? (
         <div className="title__container">
           <div className="button_container">
             <h4>Вы знаете, где проживают </h4>

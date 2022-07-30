@@ -42,6 +42,7 @@ export default function PeoplesMapQuiz(props) {
         fillOpacity: 0.5,
         fillColor: "#A4D6A5",
       });
+      props.handleRightAnswers(layer.feature.properties.Nation);
     } else {
       layer.setStyle({
         weight: 1,
@@ -49,6 +50,7 @@ export default function PeoplesMapQuiz(props) {
         fillColor: "#F27272",
         fillOpacity: 0.5,
       });
+      props.handleWrongAnswers(props.nationsData[counter]);
     }
 
     selected = layer;

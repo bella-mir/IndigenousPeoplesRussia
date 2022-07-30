@@ -19,12 +19,27 @@ import lakes from "../data/lakes.json";
 import PeoplesMapQuiz from "./PeoplesMapQuiz";
 import PeoplesMapInfo from "./PeoplesMapInfo";
 import PeoplesMapStart from "./PeoplesMapStart";
+import PeoplesMapResult from "./PeoplesMapResult";
 import { selectedNations } from "./quizConstants";
 
 const PeoplesMap = (props) => {
   const [nationsData, setNationsData] = useState(selectedNations);
   let [info, SetInfo] = useState(null);
   let [answer, SetAnswer] = useState(null);
+  const [resultsMode, setResultsMode] = useState(false);
+  const [rightAnswers, setRightAnswers] = useState([]);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
+
+  const handleResults = (option) => {
+    setResultsMode(option);
+  };
+
+  const handleRightAnswers = (answer) => {
+    setRightAnswers((rightAnswers) => [...rightAnswers, answer]);
+  };
+  const handleWrongAnswers = (answer) => {
+    setWrongAnswers((wrongAnswers) => [...wrongAnswers, answer]);
+  };
 
   //create function that shuffles array
   function shuffleArray(array) {
@@ -63,6 +78,8 @@ const PeoplesMap = (props) => {
         isQuiz={props.quizMode}
         islearn={props.learnMode}
         isStart={props.startMode}
+        isResults={resultsMode}
+        handleResults={handleResults}
         handleStartQuizClick={props.handleStartQuizClick}
         handleLearnClick={props.handleLearnClick}
         handleStartModeClick={props.handleStartModeClick}
@@ -90,10 +107,15 @@ const PeoplesMap = (props) => {
           <PeoplesMapQuiz
             handleSetAnswer={SetAnswer}
             nationsData={nationsData}
+            handleRightAnswers={handleRightAnswers}
+            handleWrongAnswers={handleWrongAnswers}
           />
         ) : null}
         {props.learnMode ? <PeoplesMapInfo handleSetInfo={SetInfo} /> : null}
-        {!props.quizMode & !props.learnMode ? <PeoplesMapStart /> : null}
+        {resultsMode ? <PeoplesMapResult rightAnswers={rightAnswers} wrongAnswers={wrongAnswers} /> : null}
+        {!props.quizMode & !props.learnMode & !resultsMode ? (
+          <PeoplesMapStart />
+        ) : null}
 
         <ScaleControl position="bottomleft" />
         <ZoomControl position="bottomleft" />
